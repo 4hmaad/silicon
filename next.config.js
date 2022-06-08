@@ -1,6 +1,25 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
+  eslint: {
+    dirs: ['src'],
+  },
   reactStrictMode: true,
-}
+  // SVGR Configurations
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
+      use: [
+        {
+          loader: '@svgr/webpack',
+          options: {
+            typescript: true,
+            icon: true,
+          },
+        },
+      ],
+    });
 
-module.exports = nextConfig
+    return config;
+  },
+};
