@@ -1,7 +1,11 @@
 {
+  "css.validate": false,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "headwind.runOnSave": false,
   "scss.lint.unknownAtRules": "ignore",
   "css.lint.unknownAtRules": "ignore",
-  "editor.quickSuggestions": {
-    "strings": true
-  }
 }
