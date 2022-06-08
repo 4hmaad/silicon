@@ -45,9 +45,18 @@
   }
 
   /* #region  /**=========== Typography =========== */
-  .h0 {
-    @apply text-3xl font-bold font-primary md:text-5xl;
+  .display1 {
+    @apply font-bold text-7xl font-primary sm:text-6xl;
   }
+  
+  .display2 {
+    @apply text-6xl font-bold font-primary md:text-5xl;
+  }
+  
+  .display3 {
+    @apply text-4xl font-bold font-primary md:text-3xl;
+  }
+
 
   h1,
   .h1 {

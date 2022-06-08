@@ -46,23 +46,24 @@ export const ProductOverview = ({
   const colorAttribute = variantOptions['Color']
     ? 'Color'
     : variantOptions['Bed Colour']
-    ? 'Bed Colour'
-    : 'Colour';
+      ? 'Bed Colour'
+      : 'Colour';
+
   const sizeAttribute = variantOptions['Bed Size'] ? 'Bed Size' : 'Size';
   return (
     <div className='bg-white'>
-      <div className='mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
-        <div className='flex lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8'>
+      <div className='max-w-2xl px-4 py-16 mx-auto sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
+        <div className='flex lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-6'>
           {/* Image gallery */}
-          <Tab.Group as='div' className='flex flex-col-reverse'>
+          <Tab.Group as='div' className='flex flex-col-reverse col-span-6'>
             {/* Image selector */}
-            <div className='mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none'>
-              <Tab.List className='grid grid-cols-4 gap-6'>
+            <div className='hidden w-full max-w-2xl mx-auto mt-6 sm:block lg:max-w-none'>
+              <Tab.List className='grid grid-cols-3 gap-4'>
                 {productImages.map((image, idx) => (
                   <Tab
                     defaultChecked={idx === 0}
                     key={image.alt}
-                    className='relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4'
+                    className='relative flex items-center justify-center h-24 text-sm font-medium text-gray-900 uppercase bg-white rounded-md cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4'
                   >
                     {({ selected }) => (
                       <>
@@ -71,7 +72,7 @@ export const ProductOverview = ({
                           <img
                             src={image.url}
                             alt=''
-                            className='h-full w-full object-cover object-center'
+                            className='object-cover object-center w-full h-full'
                           />
                         </span>
                         <span
@@ -88,13 +89,13 @@ export const ProductOverview = ({
               </Tab.List>
             </div>
 
-            <Tab.Panels className='aspect-w-1 aspect-h-1 w-full'>
+            <Tab.Panels className='w-full aspect-w-1 aspect-h-1'>
               {productImages.map((image) => (
                 <Tab.Panel key={image.alt}>
                   <img
                     src={image.url}
                     alt={image.alt}
-                    className='h-full w-full object-cover object-center sm:rounded-lg'
+                    className='object-cover object-center w-full h-full sm:rounded-lg'
                   />
                 </Tab.Panel>
               ))}
@@ -102,7 +103,7 @@ export const ProductOverview = ({
           </Tab.Group>
 
           {/* Product info */}
-          <div className='w-100 mt-10 flex flex-col px-4 sm:mt-16 sm:px-0 lg:mt-0'>
+          <div className='flex flex-col col-span-5 col-start-8 px-4 mt-10 w-100 sm:mt-16 sm:px-0 lg:mt-0'>
             <h1 className='text-3xl font-extrabold tracking-tight text-gray-900'>
               {product.name}
             </h1>
@@ -215,14 +216,14 @@ export const ProductOverview = ({
                 </RadioGroup>
               </div>
             ) : null}
-            <div className='mt-20 flex'>
+            <div className='flex mt-20'>
               <button
                 onClick={() =>
                   addToCart({
                     items: [{ itemID: selectedProduct.itemID, quantity: 1 }],
                   })
                 }
-                className='flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full'
+                className='flex items-center justify-center flex-1 max-w-xs px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full'
               >
                 {isLoading ? 'Adding...' : 'Add to cart'}
               </button>
